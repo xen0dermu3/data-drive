@@ -27,6 +27,7 @@
     "@nestjs/mapped-types": "*",
     "@nestjs/microservices": "^10.3.0",
     "@nestjs/platform-express": "^10.0.0",
+    "@nestjs/swagger": "^7.1.17",
     "@prisma/client": "5.7.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
@@ -77,6 +78,12 @@
     "roots": [
       "<rootDir>/apps/",
       "<rootDir>/libs/"
-    ]
+    ],
+    "moduleNameMapper": {
+      "@add-item/(.*)": "<rootDir>/apps/add-item/src/$1",
+      "@api-gateway/(.*)": "<rootDir>/apps/api-gateway/src/$1",
+      "@get-item/(.*)": "<rootDir>/apps/get-item/src/$1",
+      "@common/(.*)": "<rootDir>/libs/common/src/$1"
+    }
   }
 }

@@ -1,4 +1,5 @@
 import { AddItemDto as IAddItemDto } from '@common/types';
+import { ApiProperty } from '@nestjs/swagger';
 import {
   IsNotEmpty,
   IsNumber,
@@ -12,9 +13,11 @@ export class AddItemDto implements IAddItemDto {
   @IsString()
   @MinLength(5)
   @MaxLength(50)
+  @ApiProperty()
   name: string;
 
   @IsNotEmpty()
   @IsNumber()
+  @ApiProperty()
   price: number;
 }
