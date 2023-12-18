@@ -1,8 +1,10 @@
+import { ShoppingCartController } from '@add-item/shopping-cart/shopping-cart.controller';
+import { ShoppingCartService } from '@add-item/shopping-cart/shopping-cart.service';
+import { ShoppingCartItemModule } from '@common/shopping-cart-item/shopping-cart-item.module';
 import { Module } from '@nestjs/common';
-import { ShoppingCartService } from './shopping-cart.service';
-import { ShoppingCartController } from './shopping-cart.controller';
 
 @Module({
+  imports: [ShoppingCartItemModule],
   controllers: [ShoppingCartController],
   providers: [ShoppingCartService],
 })

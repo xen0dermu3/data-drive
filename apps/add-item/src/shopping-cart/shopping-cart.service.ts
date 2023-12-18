@@ -1,26 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { CreateShoppingCartDto } from './dto/create-shopping-cart.dto';
-import { UpdateShoppingCartDto } from './dto/update-shopping-cart.dto';
+import { AddItemDto } from '@add-item/shopping-cart/dto/add-item.dto';
+import { ShoppingCartItemService } from '@common/shopping-cart-item/shopping-cart-item.service';
 
 @Injectable()
 export class ShoppingCartService {
-  create(createShoppingCartDto: CreateShoppingCartDto) {
-    return 'This action adds a new shoppingCart';
-  }
+  constructor(private shoppingCartItemService: ShoppingCartItemService) {}
 
-  findAll() {
-    return `This action returns all shoppingCart`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} shoppingCart`;
-  }
-
-  update(id: number, updateShoppingCartDto: UpdateShoppingCartDto) {
-    return `This action updates a #${id} shoppingCart`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} shoppingCart`;
+  addItem(addItemDto: AddItemDto) {
+    return this.shoppingCartItemService.addItem(addItemDto);
   }
 }

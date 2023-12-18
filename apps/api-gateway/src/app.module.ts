@@ -1,10 +1,9 @@
+import { ShoppingCartModule } from '@api-gateway/shopping-cart/shopping-cart.module';
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [ShoppingCartModule],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

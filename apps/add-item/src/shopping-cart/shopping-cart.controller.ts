@@ -1,35 +1,25 @@
 import { Controller } from '@nestjs/common';
-import { MessagePattern, Payload } from '@nestjs/microservices';
-import { ShoppingCartService } from './shopping-cart.service';
-import { CreateShoppingCartDto } from './dto/create-shopping-cart.dto';
-import { UpdateShoppingCartDto } from './dto/update-shopping-cart.dto';
+import {
+  ShoppingCartItem,
+  ShoppingCartAddItemServiceController,
+  ShoppingCartAddItemServiceControllerMethods,
+} from '@common/types';
+import { Observable } from 'rxjs';
+import { AddItemDto } from '@add-item/shopping-cart/dto/add-item.dto';
+import { ShoppingCartService } from '@add-item/shopping-cart/shopping-cart.service';
 
 @Controller()
-export class ShoppingCartController {
+@ShoppingCartAddItemServiceControllerMethods()
+export class ShoppingCartController
+  implements ShoppingCartAddItemServiceController
+{
   constructor(private readonly shoppingCartService: ShoppingCartService) {}
-
-  @MessagePattern('createShoppingCart')
-  create(@Payload() createShoppingCartDto: CreateShoppingCartDto) {
-    return this.shoppingCartService.create(createShoppingCartDto);
-  }
-
-  @MessagePattern('findAllShoppingCart')
-  findAll() {
-    return this.shoppingCartService.findAll();
-  }
-
-  @MessagePattern('findOneShoppingCart')
-  findOne(@Payload() id: number) {
-    return this.shoppingCartService.findOne(id);
-  }
-
-  @MessagePattern('updateShoppingCart')
-  update(@Payload() updateShoppingCartDto: UpdateShoppingCartDto) {
-    return this.shoppingCartService.update(updateShoppingCartDto.id, updateShoppingCartDto);
-  }
-
-  @MessagePattern('removeShoppingCart')
-  remove(@Payload() id: number) {
-    return this.shoppingCartService.remove(id);
+  addItem(
+    addItemDto: AddItemDto,
+  ):
+    | ShoppingCartItem
+    | Observable<ShoppingCartItem>
+    | Promise<ShoppingCartItem> {
+    return this.shoppingCartService.addItem(addItemDto);
   }
 }
