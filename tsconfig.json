@@ -20,7 +20,8 @@
     "paths": {
       "@add-item/*": ["./apps/add-item/src/*"],
       "@api-gateway/*": ["./apps/api-gateway/src/*"],
-      "@get-item/*": ["./apps/get-item/src/*"]
+      "@get-item/*": ["./apps/get-item/src/*"],
+      "@common/*": ["./libs/common/src/*"]
     }
   }
 }

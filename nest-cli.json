@@ -25,9 +25,7 @@
       "entryFile": "main",
       "sourceRoot": "apps/add-item/src",
       "compilerOptions": {
-        "tsConfigPath": "apps/add-item/tsconfig.app.json",
-        "assets": ["**/*.proto"],
-        "watchAssets": true
+        "tsConfigPath": "apps/add-item/tsconfig.app.json"
       }
     },
     "get-item": {
@@ -36,8 +34,17 @@
       "entryFile": "main",
       "sourceRoot": "apps/get-item/src",
       "compilerOptions": {
-        "tsConfigPath": "apps/get-item/tsconfig.app.json",
-        "assets": ["**/*.proto"],
+        "tsConfigPath": "apps/get-item/tsconfig.app.json"
+      }
+    },
+    "common": {
+      "type": "library",
+      "root": "libs/common",
+      "entryFile": "index",
+      "sourceRoot": "libs/common/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/common/tsconfig.lib.json",
+        "assets": ["proto/*.proto"],
         "watchAssets": true
       }
     }
